@@ -1,9 +1,7 @@
 body {
     font-family: Arial, sans-serif; 
+    background-color: #ffcc00; /* Mustard background */
     color: blue;
-    background-image: url('https://images.unsplash.com/photo-1733251219702-eab9e914f7ff?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMnx8fGVufDB8fHx8fA%3D%3D');
-    background-size: cover;
-    background-position: center;
     margin: 0;
     padding: 0;
 }
@@ -106,13 +104,6 @@ footer p {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     width: 250px;
     display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-#cart-popup.show {
-    display: block;
-    opacity: 1;
 }
 
 #cart-popup h3 {
@@ -142,42 +133,38 @@ footer p {
     background-color: darkred;
 }
 
-#shake-box {
-    display: none;
+#payment-section {
     position: fixed;
-    top: 80px;
+    top: 100px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: yellow;
-    padding: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
-    border-radius: 5px;
-    animation: shake 0.5s infinite;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #333;
+    width: 300px;
+    display: none;
 }
 
-/* Shake animation */
-@keyframes shake {
-    0% { transform: translateX(-50%) rotate(0deg); }
-    25% { transform: translateX(-50%) rotate(5deg); }
-    50% { transform: translateX(-50%) rotate(0deg); }
-    75% { transform: translateX(-50%) rotate(-5deg); }
-    100% { transform: translateX(-50%) rotate(0deg); }
-}
-
-#confirm-btn {
+#payment-section button {
     background-color: green;
     color: white;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    display: block;
-    margin-top: 10px;
 }
 
-#confirm-btn:hover {
+#payment-section button:hover {
     background-color: darkgreen;
+}
+
+#redirect-message {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: yellow;
+    padding: 20px;
+    text-align: center;
+    display: none;
 }
