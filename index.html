@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Art Studio</title>
+    <style>
+        /* CSS Styles - Combined in this file */
+        body {
+            font-family: Arial, sans-serif;
+            color: blue; /* Text color is blue */
+            background-image: url('https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJlfGVufDB8fDB8fHww');
+            background-size: cover; /* Makes the image cover the entire page */
+            background-position: center; /* Centers the background image */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .product {
+            text-align: center;
+            width: 45%;
+            margin: 10px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Link Styles */
+        .product a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: blue;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .product a:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to My Art Studio</h1>
+        <p>Handmade Jewelry, Calligraphy, Mini Books & Scratch Cards</p>
+    </header>
+    
+    <section class="gallery">
+        <!-- Handmade Bracelets -->
+        <div class="product">
+            <h2><a href="#bracelets">Handmade Bracelets</a></h2>
+            <img src="https://media.istockphoto.com/id/516001468/photo/take-your-friendship-to-the-next-level-with-friendship-bracelets.webp?a=1&b=1&s=612x612&w=0&k=20&c=eEOE9oZVKqD25wjKLMdOjfLavUv4vDUQi6gcnp79nMU=" alt="Handmade Bracelets">
+            <p>Beautiful, one-of-a-kind hand-drawn bracelet designs.</p>
+        </div>
+
+        <!-- Calligraphy Art -->
+        <div class="product">
+            <h2><a href="#calligraphy">Calligraphy Art</a></h2>
+            <img src="https://images.unsplash.com/photo-1613289720033-c79deb7d3fca?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2FsaWdyYXBoeSUyMGFydHxlbnwwfHwwfHx8MA%3D%3D" alt="Calligraphy Art">
+            <p>Custom calligraphy for every occasion. Elegant and timeless.</p>
+        </div>
+
+        <!-- Mini Books -->
+        <div class="product">
+            <h2><a href="#mini-books">Mini Books</a></h2>
+            <img src="https://plus.unsplash.com/premium_photo-1677517547245-aa3239cd15ec?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fG1pbmklMjBib29rcyUyMGNyYWZ0c3xlbnwwfHwwfHx8MA%3D%3D" alt="Mini Books">
+            <p>Handcrafted mini books with detailed illustrations and stories.</p>
+        </div>
+
+        <!-- Scratch Cards -->
+        <div class="product">
+            <h2><a href="#scratch-cards">Scratch Cards</a></h2>
+            <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJlfGVufDB8fDB8fHww" alt="Scratch Cards">
+            <p>Unique scratch cards, perfect for gifts or special events.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact: info@yourartstudio.com | Follow me on Instagram @yourartstudio</p>
+    </footer>
+
+</body>
+</html>
