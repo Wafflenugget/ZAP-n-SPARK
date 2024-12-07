@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Art Studio</title>
     <style>
-        /* CSS Styles - Combined in this file */
         body {
             font-family: Arial, sans-serif;
-            color: blue; /* Text color is blue */
+            color: blue; 
             background-image: url('https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJlfGVufDB8fDB8fHww');
-            background-size: cover; /* Makes the image cover the entire page */
-            background-position: center; /* Centers the background image */
+            background-size: cover; 
+            background-position: center; 
             margin: 0;
             padding: 0;
         }
 
         header {
-            background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
+            background-color: rgba(0, 0, 0, 0.7); 
             color: white;
             text-align: center;
             padding: 20px 0;
@@ -45,7 +44,7 @@
             margin: 10px 0;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 15px;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            background-color: rgba(255, 255, 255, 0.8); 
         }
 
         .product img {
@@ -68,7 +67,6 @@
             font-size: 14px;
         }
 
-        /* Link Styles */
         .product a {
             display: inline-block;
             margin-top: 10px;
@@ -83,13 +81,104 @@
             background-color: darkblue;
         }
 
-        /* Price Style */
         .price {
             display: block;
             margin-top: 10px;
             font-size: 18px;
             color: green;
             font-weight: bold;
+        }
+
+        /* Cart Icon */
+        #cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Cart Details Popup */
+        #cart-popup {
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #333;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            display: none;
+        }
+
+        #cart-popup h3 {
+            margin-top: 0;
+        }
+
+        .cart-item {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cart-item span {
+            font-size: 16px;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .delete-btn:hover {
+            background-color: darkred;
+        }
+
+        #shake-box {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: yellow;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            border-radius: 5px;
+            animation: shake 0.5s infinite;
+        }
+
+        /* Shake animation */
+        @keyframes shake {
+            0% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(5deg); }
+            50% { transform: translateX(-50%) rotate(0deg); }
+            75% { transform: translateX(-50%) rotate(-5deg); }
+            100% { transform: translateX(-50%) rotate(0deg); }
+        }
+
+        #confirm-btn {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin-top: 10px;
+        }
+
+        #confirm-btn:hover {
+            background-color: darkgreen;
         }
     </style>
 </head>
@@ -101,42 +190,86 @@
     </header>
     
     <section class="gallery">
-        <!-- Handmade Bracelets -->
-        <div class="product">
-            <h2><a href="#bracelets">Handmade Bracelets</a></h2>
+        <div class="product" id="bracelets">
+            <h2><a href="#">Handmade Bracelets</a></h2>
             <img src="https://media.istockphoto.com/id/516001468/photo/take-your-friendship-to-the-next-level-with-friendship-bracelets.webp?a=1&b=1&s=612x612&w=0&k=20&c=eEOE9oZVKqD25wjKLMdOjfLavUv4vDUQi6gcnp79nMU=" alt="Handmade Bracelets">
             <p>Beautiful, one-of-a-kind hand-drawn bracelet designs.</p>
             <span class="price">150¥</span>
+            <a href="#" onclick="addToCart('Handmade Bracelets')">Add to Cart</a>
         </div>
 
-        <!-- Calligraphy Art -->
-        <div class="product">
-            <h2><a href="#calligraphy">Calligraphy Art</a></h2>
-            <img src="https://images.unsplash.com/photo-1613289720033-c79deb7d3fca?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2FsaWdyYXBoeSUyMGFydHxlbnwwfHwwfHx8MA%3D%3D" alt="Calligraphy Art">
-            <p>Custom calligraphy for every occasion. Elegant and timeless.</p>
-            <span class="price">150¥</span>
-        </div>
-
-        <!-- Mini Books -->
-        <div class="product">
-            <h2><a href="#mini-books">Mini Books</a></h2>
-            <img src="https://plus.unsplash.com/premium_photo-1677517547245-aa3239cd15ec?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fG1pbmklMjBib29rcyUyMGNyYWZ0c3xlbnwwfHwwfHx8MA%3D%3D" alt="Mini Books">
-            <p>Handcrafted mini books with detailed illustrations and stories.</p>
-            <span class="price">150¥</span>
-        </div>
-
-        <!-- Scratch Cards -->
-        <div class="product">
-            <h2><a href="#scratch-cards">Scratch Cards</a></h2>
-            <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJlfGVufDB8fDB8fHww" alt="Scratch Cards">
-            <p>Unique scratch cards, perfect for gifts or special events.</p>
-            <span class="price">150¥</span>
-        </div>
+        <!-- Additional products here... -->
     </section>
+
+    <!-- Cart icon -->
+    <div id="cart" onclick="toggleCart()">🛒</div>
+
+    <!-- Cart Popup -->
+    <div id="cart-popup">
+        <h3>Your Cart</h3>
+        <div id="cart-items"></div>
+        <button id="confirm-btn" onclick="confirmOrder()">Confirm and Purchase</button>
+    </div>
+
+    <!-- Click Animation Box -->
+    <div id="shake-box">Click Click Click!</div>
 
     <footer>
         <p>Contact: info@yourartstudio.com | Follow me on Instagram @yourartstudio</p>
     </footer>
+
+    <script>
+        let cart = [];
+        let cartPopup = document.getElementById('cart-popup');
+        let cartItemsDiv = document.getElementById('cart-items');
+        let shakeBox = document.getElementById('shake-box');
+        let cartIcon = document.getElementById('cart');
+
+        function toggleCart() {
+            cartPopup.style.display = cartPopup.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function addToCart(product) {
+            cart.push(product);
+            updateCart();
+            triggerShake();
+        }
+
+        function updateCart() {
+            cartItemsDiv.innerHTML = '';
+            cart.forEach((item, index) => {
+                let div = document.createElement('div');
+                div.classList.add('cart-item');
+                div.innerHTML = `
+                    <span>${item}</span>
+                    <button class="delete-btn" onclick="removeItem(${index})">Delete</button>
+                `;
+                cartItemsDiv.appendChild(div);
+            });
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function confirmOrder() {
+            alert("Order confirmed! Thank you for your purchase.");
+            cart = [];
+            updateCart();
+            cartPopup.style.display = 'none';
+        }
+
+        function triggerShake() {
+            shakeBox.style.display = 'block';
+            setTimeout(() => {
+                shakeBox.style.display = 'none';
+            }, 2000);
+        }
+
+        // Shake every 20 seconds
+        setInterval(triggerShake, 20000);
+    </script>
 
 </body>
 </html>
