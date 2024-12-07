@@ -1,27 +1,17 @@
 let cart = [];
 let cartPopup = document.getElementById('cart-popup');
 let cartItemsDiv = document.getElementById('cart-items');
-let shakeBox = document.getElementById('shake-box');
 let cartIcon = document.getElementById('cart');
 
-// Add cart counter element to the cart icon
-let cartCount = document.createElement('span');
-cartCount.id = 'cart-count';
-cartIcon.appendChild(cartCount);
-
-// Toggle the cart popup visibility
 function toggleCart() {
-    cartPopup.classList.toggle('show');
+    cartPopup.style.display = cartPopup.style.display === 'block' ? 'none' : 'block';
 }
 
-// Add product to cart
 function addToCart(product) {
     cart.push(product);
     updateCart();
-    triggerShake();
 }
 
-// Update cart display
 function updateCart() {
     cartItemsDiv.innerHTML = '';
     cart.forEach((item, index) => {
@@ -33,32 +23,27 @@ function updateCart() {
         `;
         cartItemsDiv.appendChild(div);
     });
-
-    // Update cart item count
-    cartCount.textContent = cart.length;
 }
 
-// Remove item from the cart
 function removeItem(index) {
     cart.splice(index, 1);
     updateCart();
 }
 
-// Confirm the order and reset the cart
-function confirmOrder() {
-    alert("Order confirmed! Thank you for your purchase.");
-    cart = [];
-    updateCart();
-    cartPopup.style.display = 'none';
+function confirmPurchase() {
+    // Show payment section after confirming purchase
+    document.getElementById('payment-section').style.display = 'block';
+    document.getElementById('confirm-btn').style.display = 'none';  // Hide the confirm button
 }
 
-// Trigger shake effect
-function triggerShake() {
-    shakeBox.style.display = 'block';
-    setTimeout(() => {
-        shakeBox.style.display = 'none';
-    }, 2000);
+function completePayment() {
+    // Simulate payment completion (replace this with actual payment gateway integration)
+    alert('Payment Successful! Thank you for your purchase.');
+    
+    // Show the redirect message after payment is complete
+    document.getElementById('payment-section').style.display = 'none';
+    document.getElementById('redirect-message').style.display = 'block';
 }
 
-// Shake every 20 seconds
-setInterval(triggerShake, 20000);
+function redirectToGallery() {
+    // Redirect back to the product
