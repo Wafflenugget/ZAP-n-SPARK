@@ -1,14 +1,4 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Click n Spark</title>
-  <link rel="stylesheet" href="./style.css">
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,9 +12,9 @@
         <h1>Welcome to My Art Studio</h1>
         <p>Handmade Jewelry, Calligraphy, Mini Books & Scratch Cards</p>
     </header>
-    
+
     <section class="gallery">
-        <!-- Handmade Bracelets -->
+        <!-- Product 1: Handmade Bracelets -->
         <div class="product" id="bracelets">
             <h2><a href="#">Handmade Bracelets</a></h2>
             <img src="https://media.istockphoto.com/id/516001468/photo/take-your-friendship-to-the-next-level-with-friendship-bracelets.webp?a=1&b=1&s=612x612&w=0&k=20&c=eEOE9oZVKqD25wjKLMdOjfLavUv4vDUQi6gcnp79nMU=" alt="Handmade Bracelets">
@@ -33,41 +23,17 @@
             <a href="#" onclick="addToCart('Handmade Bracelets')">Add to Cart</a>
         </div>
 
-        <!-- Custom Calligraphy -->
+        <!-- Product 2: Calligraphy -->
         <div class="product" id="calligraphy">
             <h2><a href="#">Custom Calligraphy</a></h2>
-            <img src="https://images.unsplash.com/photo-1473186505569-9c61870c11f9?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZW5nbGlzaCUyMGNhbGlncmFwaHl8ZW58MHx8MHx8fDA%3D" alt="Custom Calligraphy">
-            <p>Elegant, custom calligraphy for letters to friends or for your loved ones.</p>
+            <img src="https://images.unsplash.com/photo-1473186505569-9c61870c11f9?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx8ZW5nbGlzaCUyMGNhbGlncmFwaHl8ZW58MHx8MHx8fDA%3D" alt="Custom Calligraphy">
+            <p>Elegant, custom hand-lettered calligraphy for any occasion.</p>
             <span class="price">200¥</span>
             <a href="#" onclick="addToCart('Custom Calligraphy')">Add to Cart</a>
         </div>
 
-        <!-- Custom Scratch Cards -->
-        <div class="product" id="scratch-cards">
-            <h2><a href="#">Custom Scratch Cards</a></h2>
-            <img src="https://plus.unsplash.com/premium_photo-1720588807684-095c30703904?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHVycGxlJTIwZ2FsYXp5fGVufDB8fDB8fHww" alt="Custom Scratch Cards">
-            <p>Design your own scratch cards for fun surprises!</p>
-            <span class="price">100¥</span>
-            <a href="#" onclick="addToCart('Custom Scratch Cards')">Add to Cart</a>
-        </div>
-
-        <!-- Custom Mini Notebooks -->
-        <div class="product" id="mini-notebooks">
-            <h2><a href="#">Custom Mini Notebooks</a></h2>
-            <img src="https://plus.unsplash.com/premium_photo-1677168797153-fd930b852bad?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Ymx1ZSUyMGFuZCUyMHB1cnBsZSUyMGFtZCUyMHBpbmslMjBtaW5pJTIwbm90ZWJvb2tzfGVufDB8fDB8fHww" alt="Custom Mini Notebooks">
-            <p>Personalized mini notebooks for your creative ideas.</p>
-            <span class="price">120¥</span>
-            <a href="#" onclick="addToCart('Custom Mini Notebooks')">Add to Cart</a>
-        </div>
-
-        <!-- Custom Art -->
-        <div class="product" id="custom-art">
-            <h2><a href="#">Custom Art</a></h2>
-            <img src="https://plus.unsplash.com/premium_vector-1724386569016-51a9c52cd6d8?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFydCUyMG9mJTIwZmxvd2VycyUyMGVhc3klMjBkcmF3bnxlbnwwfHwwfHx8MA%3D%3D" alt="Custom Art">
-            <p>Bring your ideas to life with unique, personalized art.</p>
-            <span class="price">300¥</span>
-            <a href="#" onclick="addToCart('Custom Art')">Add to Cart</a>
-        </div>
+        <!-- More Products: Scratch Cards, Mini Notebooks, etc. -->
+        <!-- (You can add more product divs here like the above) -->
     </section>
 
     <!-- Cart icon -->
@@ -77,20 +43,25 @@
     <div id="cart-popup">
         <h3>Your Cart</h3>
         <div id="cart-items"></div>
-        <button id="confirm-btn" onclick="confirmOrder()">Confirm and Purchase</button>
+        <button id="confirm-btn" onclick="confirmPurchase()">Confirm and Purchase</button>
     </div>
 
-    <div id="shake-box">Click Click Click!</div>
+    <!-- Payment Section -->
+    <div id="payment-section" style="display:none;">
+        <h3>Processing Payment...</h3>
+        <button onclick="completePayment()">Complete Payment</button>
+    </div>
+
+    <!-- Redirect Message -->
+    <div id="redirect-message" style="display:none;">
+        <h3>Thank you for your purchase!</h3>
+        <button onclick="redirectToGallery()">Go Back to Shopping</button>
+    </div>
 
     <footer>
-        <p>Contact: info@yourartstudio.com | Follow me on Youtube @yourartstudio</p>
+        <p>Contact: info@yourartstudio.com | Follow me on Instagram @yourartstudio</p>
     </footer>
 
     <script src="script.js"></script>
-</body>
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
-
 </body>
 </html>
