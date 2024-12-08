@@ -1,12 +1,12 @@
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || []; // Load cart from localStorage
 let cartPopup = document.getElementById('cart-popup');
 let cartItemsDiv = document.getElementById('cart-items');
 let shakeBox = document.getElementById('shake-box');
 let cartIcon = document.getElementById('cart');
 
-// Simulated user login status and username
-let isLoggedIn = false; // Change to true when user logs in
-let username = localStorage.getItem('username') || ''; // Store the username from localStorage
+// Load user login status and username from localStorage
+let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; // Check if the user is logged in
+let username = localStorage.getItem('username') || ''; // Get the username from localStorage
 
 // Add cart counter element to the cart icon
 let cartCount = document.createElement('span');
@@ -40,6 +40,8 @@ function updateCart() {
 
     // Update cart item count
     cartCount.textContent = cart.length;
+    // Save cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
 }
 
 // Remove item from the cart
@@ -76,7 +78,7 @@ function confirmOrder() {
     // Check if the user is logged in
     if (!isLoggedIn) {
         showToast("Please log in to proceed with the purchase.");
-        window.location.href = "https://wafflenugget.github.io/login-page/"; // Redirect to login page
+        window.location.href = "https://codepen.io/KIDS-LEARNING-FOR-EVRYONE/full/bBwGpXg"; // Redirect to login page
         return;
     }
 
@@ -93,6 +95,7 @@ function login(user) {
     username = user; // Store the username
     isLoggedIn = true; // Update login status
     localStorage.setItem('username', username); // Store username in localStorage
+    localStorage.setItem('isLoggedIn', 'true'); // Set login status in localStorage
     showToast(`Welcome, ${username}!`); // Alert the user
     // Redirect to cart page after login
     window.location.href = "https://codepen.io/KIDS-LEARNING-FOR-EVRYONE/full/OPLNmEv"; 
@@ -120,5 +123,8 @@ function triggerShake() {
 // Shake every 20 seconds
 setInterval(triggerShake, 20000);
 
-// Call this function on the cart page load to show the greeting
-window.onload = displayGreeting;
+// Call this function on the cart page load to show the greeting and cart items
+window.onload = () => {
+    displayGreeting();
+    updateCart(); // Update cart display on page load
+};
