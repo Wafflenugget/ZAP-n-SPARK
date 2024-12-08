@@ -14,12 +14,17 @@ let cartCount = document.createElement('span');
 cartCount.id = 'cart-count';
 cartIcon.appendChild(cartCount);
 
-// Display greeting message on the cart page
+// Display greeting message and prompt for purchase
 function displayGreeting() {
+    const greetingElement = document.getElementById("greeting");
+    const purchasePromptElement = document.getElementById("purchase-prompt");
+    
     if (isLoggedIn) {
-        document.getElementById("greeting").textContent = `Hello, ${username}! You are logged in.`;
-        // Prompt to confirm purchase
-        document.getElementById("purchase-prompt").textContent = "Click 'Confirm Purchase' to get your crafts.";
+        greetingElement.textContent = `Hello, ${username}! You are logged in.`;
+        purchasePromptElement.textContent = "Click 'Confirm Purchase' to get your crafts.";
+    } else {
+        greetingElement.textContent = "Hello! Please log in to proceed.";
+        purchasePromptElement.textContent = ""; // Clear prompt if not logged in
     }
 }
 
@@ -37,7 +42,7 @@ function addToCart(product) {
 
 // Update cart display
 function updateCart() {
-    cartItemsDiv.innerHTML = '';
+    cartItemsDiv.innerHTML = ''; // Clear existing items
     cart.forEach((item, index) => {
         let div = document.createElement('div');
         div.classList.add('cart-item');
@@ -82,7 +87,7 @@ function confirmOrder() {
     
     if (shippingName && shippingAddress) {
         alert(`Thank you, ${shippingName}! Your order will be shipped to ${shippingAddress}.`);
-        // If needed, you can save shipping details for further processing here
+        // Here you could send the order details to a server or process it as needed
         cart = []; // Reset the cart
         updateCart();
         cartPopup.style.display = 'none'; // Hide cart popup
