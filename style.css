@@ -95,6 +95,19 @@ footer p {
     cursor: pointer;
 }
 
+/* Number in Cart */
+#cart-count {
+    position: absolute;
+    top: -5px; /* Adjusts the position above the cart icon */
+    right: -10px; /* Adjusts the position to the right of the cart icon */
+    background-color: yellow; /* Background color for the number */
+    color: black; /* Text color */
+    border-radius: 50%; /* Round shape */
+    padding: 2px 6px; /* Spacing */
+    font-size: 14px; /* Font size */
+    font-weight: bold; /* Bold text */
+}
+
 /* Cart Details Popup */
 #cart-popup {
     position: fixed;
