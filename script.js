@@ -17,11 +17,9 @@ cartIcon.appendChild(cartCount);
 // Display greeting message on the cart page
 function displayGreeting() {
     if (isLoggedIn) {
-        document.getElementById("greeting").textContent = `Hello, ${username}!`;
-        // Show any orders if necessary
-        if (cart.length > 0) {
-            document.getElementById("order-summary").innerHTML = `Your current order: ${cart.join(', ')}`;
-        }
+        document.getElementById("greeting").textContent = `Hello, ${username}! You are logged in.`;
+        // Prompt to confirm purchase
+        document.getElementById("purchase-prompt").textContent = "Click 'Confirm Purchase' to get your crafts.";
     }
 }
 
@@ -78,12 +76,19 @@ function confirmOrder() {
         return;
     }
 
-    // If both checks pass, confirm the order
-    alert("Order confirmed! Thank you for your purchase.");
-    // Here you can store the order details or process it as needed
-    cart = []; // Reset the cart
-    updateCart();
-    cartPopup.style.display = 'none'; // Hide cart popup
+    // Show survey for shipping details
+    let shippingName = prompt("Please enter your name for shipping:");
+    let shippingAddress = prompt("Please enter your shipping address:");
+    
+    if (shippingName && shippingAddress) {
+        alert(`Thank you, ${shippingName}! Your order will be shipped to ${shippingAddress}.`);
+        // If needed, you can save shipping details for further processing here
+        cart = []; // Reset the cart
+        updateCart();
+        cartPopup.style.display = 'none'; // Hide cart popup
+    } else {
+        alert("Shipping details are required to complete your order.");
+    }
 }
 
 // Simulate user login
@@ -92,8 +97,8 @@ function login(user) {
     isLoggedIn = true; // Update login status
     localStorage.setItem('username', username); // Store username in localStorage
     alert(`Welcome, ${username}!`); // Alert the user
-    // Redirect to the main web page after login
-    window.location.href = "https://wafflenugget.github.io/ZAP-n-SPARK/"; 
+    // Update greeting and prompt
+    displayGreeting();
 }
 
 // Trigger shake effect
