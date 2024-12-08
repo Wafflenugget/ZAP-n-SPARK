@@ -76,7 +76,7 @@ function confirmOrder() {
     // Check if the user is logged in
     if (!isLoggedIn) {
         showToast("Please log in to proceed with the purchase.");
-        window.location.href = "https://codepen.io/KIDS-LEARNING-FOR-EVRYONE/full/bBwGpXg"; // Redirect to login page
+        window.location.href = "https://wafflenugget.github.io/login-page/"; // Redirect to login page
         return;
     }
 
