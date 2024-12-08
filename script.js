@@ -6,7 +6,7 @@ let cartIcon = document.getElementById('cart');
 
 // Simulated user login status and username
 let isLoggedIn = false; // Change to true when user logs in
-let username = ''; // Store the username
+let username = localStorage.getItem('username') || ''; // Store the username from localStorage
 
 // Add cart counter element to the cart icon
 let cartCount = document.createElement('span');
@@ -76,7 +76,7 @@ function confirmOrder() {
     // Check if the user is logged in
     if (!isLoggedIn) {
         showToast("Please log in to proceed with the purchase.");
-        window.location.href = "https://codepen.io/KIDS-LEARNING-FOR-EVRYONE/full/wBwGpXg"; // Redirect to login page
+        window.location.href = "https://codepen.io/KIDS-LEARNING-FOR-EVRYONE/full/bBwGpXg"; // Redirect to login page
         return;
     }
 
@@ -92,6 +92,7 @@ function confirmOrder() {
 function login(user) {
     username = user; // Store the username
     isLoggedIn = true; // Update login status
+    localStorage.setItem('username', username); // Store username in localStorage
     showToast(`Welcome, ${username}!`); // Alert the user
     // Redirect to cart page after login
     window.location.href = "https://codepen.io/KIDS-LEARNING-FOR-EVRYONE/full/OPLNmEv"; 
