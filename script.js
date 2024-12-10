@@ -14,13 +14,13 @@ let cartCount = document.createElement('span');
 cartCount.id = 'cart-count';
 cartIcon.appendChild(cartCount);
 
-// Display greeting message and prompt for purchase
+// Display greeting message and prompt for purchase only when the cart is clicked
 function displayGreeting() {
     const greetingElement = document.getElementById("greeting");
     const purchasePromptElement = document.getElementById("purchase-prompt");
     
     if (isLoggedIn) {
-        greetingElement.textContent = `Hello, ${username}! You are logged in.`;
+        greetingElement.textContent = `Hello, ${username}! Please log in again to continue.`;
         purchasePromptElement.textContent = "Click 'Confirm Purchase' to get your crafts.";
     } else {
         greetingElement.textContent = "Hello! Please log in to proceed.";
@@ -28,9 +28,10 @@ function displayGreeting() {
     }
 }
 
-// Toggle the cart popup visibility
+// Toggle the cart popup visibility and show greeting/prompt
 function toggleCart() {
     cartPopup.classList.toggle('show');
+    displayGreeting(); // Display greeting and prompt when the cart is clicked
 }
 
 // Add product to cart
@@ -102,8 +103,8 @@ function login(user) {
     isLoggedIn = true; // Update login status
     localStorage.setItem('username', username); // Store username in localStorage
     alert(`Welcome, ${username}!`); // Alert the user
-    // Update greeting and prompt
-    displayGreeting();
+    // Redirect to the ZAP-n-SPARK buying page
+    window.location.href = "https://wafflenugget.github.io/ZAP-n-SPARK/";
 }
 
 // Trigger shake effect
@@ -117,8 +118,7 @@ function triggerShake() {
 // Shake every 20 seconds
 setInterval(triggerShake, 20000);
 
-// Call this function on the page load to show the greeting
+// Update cart on page load
 window.onload = function() {
     updateCart(); // Update cart display
-    displayGreeting(); // Display greeting if logged in
 };
